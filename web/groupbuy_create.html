@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客团商城后台管理 - 基本表单</title>
+    <meta name="keywords" content="客团 团购 商城 后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+    <link rel="stylesheet" type="text/css" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" type="text/css" href="css/demo/webuploader-demo1.min.css">
+    <link rel="stylesheet" type="text/css" href="css/demo/webuploader-demo2.min.css">
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>创建团购 <small>团购状态在管理页面修改</small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="form_basic.html#">选项1</a>
+                                </li>
+                                <li><a href="form_basic.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" id="">团购名称：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="groupbuy_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">团购描述：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" aria-rowcount="5" id="groupbuy_info">
+									<span class="help-block m-b-none">简短的语言，重点说明产品的特色</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品id：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" aria-rowcount="5" id="product_id">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">团购供货人：</label>
+                                <div class="col-sm-10">
+                                    <small>选择供货人类型：</small>
+                                    <!--<div class="radio i-checks">-->
+                                        <!--<label>-->
+                                            <!--<input type="radio" checked="" value="0" name="b"> <i></i> 厂方</label>-->
+                                    <!--</div>-->
+                                    <div class="radio i-checks">
+                                        <label>
+                                            <input type="radio"  value="1" name="b"> <i></i> 个人</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="ownerid" placeholder="请输入你的id号码或名字" autocomplete="off">
+                                    <!--<span class="help-block m-b-none" >填写供货人的id</span>-->
+                                    <div style="display: none" id="group_create_search">
+                                        <div class="row m-b-sm m-t-sm"   id="input_groupCreate">
+                                            <div class="col-md-11">
+                                                <div class="input-group">
+                                                    <input type="text" placeholder="请输入供货人的名字或者id，以搜索你的信息！" class="input-sm form-control" id="searchKey"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary" id="searchBtn"> 搜索</button> </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-list" >
+                                            <table class="table table-hover" id="searchList">
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">团购类型：</label>
+                                <div class="col-sm-10">
+                                    <div class="radio i-checks">
+                                        <label>
+                                            <input type="radio" checked="" value="0" name="a"> <i></i> 固定团</label>
+                                    </div>
+                                    <!--<div class="radio i-checks">-->
+                                        <!--<label>-->
+                                            <!--<input type="radio" value="1" name="a"> <i></i> 动态团</label>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">成团数：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="groupbuy_count">
+                                    <!--<span class="help-block m-b-none">填写供货人的id</span>-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">团购价：</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group m-b"><span class="input-group-addon">&yen;</span>
+                                        <input type="text" class="form-control" id="groupbuy_price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">成本价：</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group m-b"><span class="input-group-addon">&yen;</span>
+                                        <input type="text" class="form-control" id="groupbuy_cost">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">款式列表：</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group m-b"><span class="input-group-addon">&yen;</span>
+                                        <input type="text" class="form-control" id="group_style" placeholder="输入参加团购的款式，多个款式用（英文逗号）分隔" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">用户返现比例：</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group m-b"><span class="input-group-addon">&yen;</span>
+                                        <input type="text" class="form-control" id="return_cash_rate" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">推荐人返现比例：</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group m-b"><span class="input-group-addon">&yen;</span>
+                                        <input type="text" class="form-control" id="return_cash_rate_inviter"  >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品发货地：</label>
+                                <div class="col-sm-10">
+                                    <div data-toggle="distpicker" id="distpicker">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="province1">省</label>
+                                            <select class="form-control" id="province1" ></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="city1">市</label>
+                                            <select class="form-control" id="city1" ></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="district1">区</label>
+                                            <select class="form-control" id="district1" ></select>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">发货地详细地址：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="groupbuy_deliver_add">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">封面图片：</label>
+                                <div class="col-sm-10">
+                                    <div class="page-container">
+                                        <div id="uploader" class="wu-example">
+                                            <div class="queueList">
+                                                <h5>上传图片（仅需上传1张）</h5>
+                                                <div id="dndArea" class="placeholder">
+                                                    <div id="filePicker"></div>
+                                                    <p>或将照片拖到这里</p>
+                                                </div>
+                                            </div>
+                                            <div class="statusBar" style="display:none;">
+                                                <div class="progress">
+                                                    <span class="text">0%</span>
+                                                    <span class="percentage"></span>
+                                                </div>
+                                                <div class="info"></div>
+                                                <div class="btns">
+                                                    <div id="filePicker2"></div>
+                                                    <div class="uploadBtn">开始上传</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">首页滑动图片：</label>
+                                <div class="col-sm-10">
+                                    <div class="page-container">
+                                        <div id="uploader1" class="wu-example">
+                                            <div class="queueList">
+                                                <h5>上传图片（上限5张）</h5>
+                                                <div id="dndArea" class="placeholder">
+                                                    <div id="filePicker_slide"></div>
+                                                    <p>或将照片拖到这里</p>
+                                                </div>
+                                            </div>
+                                            <div class="statusBar" style="display:none;">
+                                                <div class="progress">
+                                                    <span class="text">0%</span>
+                                                    <span class="percentage"></span>
+                                                </div>
+                                                <div class="info"></div>
+                                                <div class="btns">
+                                                    <div id="filePicker_slide2"></div>
+                                                    <div class="uploadBtn">开始上传</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">选择客服：</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control m-b" name="account" id="customer_service_select">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">团购开始时间：</label>
+                                <div class="col-sm-10">
+                                    <!--<input type="text" class="form-control" id="groupbuy_start_date">-->
+                                    <input type="text" class="form-control" id="groupbuy_start_time">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">团购结束时间：</label>
+                                <div class="col-sm-10">
+                                    <!--<input type="text" class="form-control" id="groupbuy_end_date">-->
+                                    <input type="text" class="form-control" id="groupbuy_end_time">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" id="createBtn">创建团购</button>
+                                    <button class="btn btn-white">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-form" class="modal fade" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 b-r">
+                            <h3 class="m-t-none m-b">登录</h3>
+
+                            <p>欢迎登录本站(⊙o⊙)</p>
+
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>用户名：</label>
+                                    <input type="email" placeholder="请输入用户名" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>密码：</label>
+                                    <input type="password" placeholder="请输入密码" class="form-control">
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>登录</strong>
+                                    </button>
+                                    <label>
+                                        <input type="checkbox" class="i-checks">自动登录</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>还不是会员？</h4>
+                            <p>您可以注册一个账户</p>
+                            <p class="text-center">
+                                <a href="form_basic.html"><i class="fa fa-sign-in big-icon"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js?v=2.1.4"></script><script src="js/checkstate.js"></script>
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+    <script type="text/javascript">
+        var BASE_URL = 'js/plugins/webuploader';
+        var firstImg;
+        var slideImgs=[];
+        function change(e){
+            console.info("changed");
+            console.info(JSON.stringify(e));
+        }
+    </script>
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    <script src="js/demo/webuploader-demo.min.js"></script>
+    <script src="js/demo/webuploader-demo_slide.min.js"></script>
+    <!--<script src="js/demo/webuploader-demo_content.min.js"></script>-->
+    <script src="js/plugins/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <script src="js/distpicker.data.js"></script>
+    <script src="js/distpicker.js"></script>
+    <script src="js/distpick_main.js"></script>
+    <script src="js/plugins/laydate/laydate.js"></script>
+    <script>
+        laydate.render({
+            elem: '#groupbuy_start_time'
+            ,type: 'datetime'
+        });
+        laydate.render({
+            elem: '#groupbuy_end_time'
+            ,type: 'datetime'
+        });
+    </script>
+    <script src="js/groupbuy_create.js"></script>
+</body>
+
+</html>

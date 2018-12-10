@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>客团商城后台管理 - 收件箱</title>
+    <meta name="keywords" content="客团 团购 商城 后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+    <link href="css/modelview.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="css/ketuan_lyb.css">-->
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="row">
+
+        <div class="col-sm-4 animated fadeInRight">
+            <div class="mail-box-header">
+                <!--<form method="get" action="index.html" class="pull-right mail-search">-->
+                    <!--<div class="input-group">-->
+                        <!--<input type="text" id="searchKey" class="form-control input-sm" name="search" placeholder="搜索邮件标题，正文等">-->
+                        <!--<div class="input-group-btn">-->
+                            <!--<button type="submit" id="searchBtn" class="btn btn-sm btn-primary">-->
+                                <!--搜索-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+                <h2>
+                    收件箱
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" class="btn" href="#tab-0" style="color:#312a2a" id="0" > 产品咨询消息</a>
+                        </li>
+                        <li><a data-toggle="tab"  class="btn" href="#tab-1" style="color:#312a2a" id="1" > 系统信息</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mail-box tab-content">
+                <div id="tab-0" class="tab-pane fade in  active">
+                    <table class="table table-hover table-mail" id="customMessageList">
+                        <tbody>
+                        <tr>
+                            <td>用户id</td>
+                            <td>未读消息数</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tab-1" class="tab-pane fade">
+                    <table class="table table-hover table-mail" id="systemMessageList">
+                        <tbody>
+                            <tr>
+                                <td>用户id</td>
+                                <td>未处理信息数</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-8 animated fadeInRight">
+            <div class="mail-box-header">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2>
+                            消息内容
+                        </h2>
+                    </div>
+                    <div class="col-sm-9 row">
+                        <div class="mail-tools tooltip-demo m-t-md col-sm-3">
+                            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="right"  ><i class="fa fa-get-pocket"></i> 获取历史消息</button>
+                        </div>
+                        <!--<div class="mail-tools tooltip-demo m-t-md col-sm-3">-->
+                            <!--<button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="right" id="send_red_packet_btn"><i class="fa fa-get-pocket"></i> 发送红包</button>-->
+                        <!--</div>-->
+                        <!--<div class="mail-tools tooltip-demo m-t-md col-sm-3">-->
+                            <!--<button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="right" id="send_notice_btn"><i class="fa fa-get-pocket"></i> 发送通知信息</button>-->
+                        <!--</div>-->
+                        <div class="mail-tools tooltip-demo m-t-md col-sm-3">
+                            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="right" id="show_user_detail_btn"><i class="fa fa-get-pocket"></i> 查看用户详情</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4>用户信息</h4>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>id</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label id="userid"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>nickname</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label id="nickname"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>phone</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label id="phone"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>email</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label id="email"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>balance</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label id="balance"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="mail-tools tooltip-demo m-t-md">-->
+                    <!--<ul class="nav nav-pills nav-justified width1100">-->
+                        <!--<li class="active classify_code"><a data-toggle="tab" class="btn" href="#tab-0" style="color:#312a2a" id="0" > 产品咨询消息</a>-->
+                        <!--</li>-->
+                        <!--<li class="classify_code"><a data-toggle="tab"  class="btn" href="#tab-1" style="color:#312a2a" id="1" > 系统信息</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+            <div id="messageContent">
+                <div class="small-chat-box fadeInRight" id="customMessageBox" style="display: none">
+
+                    <div class="heading" draggable="true">
+                        <!--<small class="chat-date pull-right">-->
+                            <!--2015.9.1-->
+                        </small> 来自。。。的消息
+                    </div>
+
+                    <div class="content" id="customMessageContentBox">
+                    </div>
+                    <div class="form-chat">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" id="sendCustomMessageContent">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" id="sendCustomMessage">发送</button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div style="border: #a7b1c2" id="systemMessageBox">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<!--<script src="js/checkstate.js"></script>-->
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<script src="js/content.min.js?v=1.0.0"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/plugins/layer/layer.min.js"></script>
+<script src="js/hplus.min.js?v=4.0.0"></script>
+<script type="text/javascript" src="js/contabs.min.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script>
+    $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="js/tools.js"></script>
+<script src="js/chatInterface.js"></script>
+</body>
+
+</html>

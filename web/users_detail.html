@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客团商城后台管理详情</title>
+    <meta name="keywords" content="客团 团购 商城 后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+
+</head>
+
+<body class="gray-bg">
+<div class="row">
+    <div class="col-sm-9">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="m-b-md">
+                                <a href="project_detail.html#" class="btn btn-white btn-xs pull-right">编辑项目</a>
+                                <h2 id="user_nickname"></h2>
+                            </div>
+                            <dl class="dl-horizontal">
+                                <dt>会员等级：</dt>
+                                <dd><span id="user_grade" class="label label-primary"></span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <dl class="dl-horizontal">
+                                <dt>性别：</dt>
+                                <dd id="user_sex"></dd>
+                                <dt>用户所在城市：</dt>
+                                <dd id="user_city"></dd>
+                                <dt>用户的电子邮件：</dt>
+                                <dd id="user_email"></dd>
+                                <dt>用户地址：</dt>
+                                <dd id="user_country"></dd>
+                                <dt>私人电话：</dt>
+                                <dd id="user_phone"></dd>
+                                <dt>版本：</dt>
+                                <dd>v1.4.2</dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-7" id="cluster_info">
+                            <dl class="dl-horizontal">
+                                <dt>他的粉丝：</dt>
+                                <dd class="project-people" id="fanslist">
+                                    <a href="project_detail.html">
+                                    </a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+<script src="js/jquery.min.js?v=2.1.4"></script><script src="js/checkstate.js"></script>
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<script src="js/content.min.js?v=1.0.0"></script>
+<script>
+    $(document).ready(function(){$("#loading-example-btn").click(function(){btn=$(this);simpleLoad(btn,true);simpleLoad(btn,false)})});function simpleLoad(btn,state){if(state){btn.children().addClass("fa-spin");btn.contents().last().replaceWith(" Loading")}else{setTimeout(function(){btn.children().removeClass("fa-spin");btn.contents().last().replaceWith(" Refresh")},2000)}};
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="js/users_detail.js"></script>
+</body>
+
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>客团商城后台管理详情</title>
+    <meta name="keywords" content="客团 团购 商城 后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+    <base target="_blank">
+
+</head>
+
+<body class="gray-bg">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="m-b-md">
+                                <a class="btn btn-group-sm navbar-btn btn-xs pull-right" id="refresh_btn">刷新</a>
+                                <a class="btn btn-group-sm navbar-btn btn-xs pull-right" id="delive_goods_btn" data-toggle="modal" data-target="#myModal">安排发货</a>
+                                <h2>订单号：</h2><label id="order_id"></label>
+                            </div>
+                            <div class="row">
+                                    <dt>状态：</dt>
+                                    <dd id="order_state" class="label label-primary"></dd>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <dl class="dl-horizontal">
+
+                                <dt>订单产品：</dt>
+                                <dd id="order_productTitle"></dd>
+
+                                <dt>订单样式：</dt>
+                                <dd id="order_descript"></dd>
+
+                                <dt>订单数量：</dt>
+                                <dd id="order_sums"></dd>
+
+                                <dt>配送地址：</dt>
+                                <dd id="deliver_add"></dd>
+
+                                <dt>订单人联系电话：</dt>
+                                <dd id="order_sendTel"></dd>
+
+                                <dt>商品价格：</dt>
+                                <dd id="order_productPrice"></dd>
+
+                                <dt>活动价格：</dt>
+                                <dd id="order_acticePrice"></dd>
+
+                                <dt>账户抵扣金额：</dt>
+                                <dd id="balance_deduction"></dd>
+
+                                <dt>实际支付价格</dt>
+                                <dd id="pay_price_real"></dd>
+
+                                <dt>产品运费：</dt>
+                                <dd id="carriagePrice"></dd>
+
+                                <dt>订单备注：</dt>
+                                <dd id="order_meno"></dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-7" id="cluster_info">
+                            <dl class="dl-horizontal">
+                                <dt>订单下单时间：</dt>
+                                <dd id="order_time"></dd>
+                                <dt>订单支付时间：</dt>
+                                <dd id="order_payTime"></dd>
+                                <dt>订单发货时间：</dt>
+                                <dd id="deliverTime"></dd>
+                                <dt>订单收货时间：</dt>
+                                <dd id="order_receiptTime"></dd>
+                                <dt>快递公司：</dt>
+                                <dd id="express_company"></dd>
+                                <dt>快递单号：</dt>
+                                <dd id="express_id"></dd>
+                                <dt>物流详情：</dt>
+                                <dd id="express_info">
+                                    <div>
+                                        <table class="table table-hover" id="expressDetails">
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">安排发货</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-8" >
+                        <dl class="dl-horizontal">
+                            <dt>选择物流公司：</dt>
+                            <dd id="select_express">
+                                <div>
+                                    <select id="express_list" data-width="100%" >
+
+                                    </select>
+                                </div>
+                            </dd>
+                            <dt>填写快递单号：</dt>
+                            <dd >
+                                <input id="order_id_input" placeholder="请填写快递单号">
+                            </dd>
+                        </dl>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="confirm_send_goods">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+</div>
+<script src="js/jquery.min.js?v=2.1.4"></script><script src="js/checkstate.js"></script>
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<script src="js/content.min.js?v=1.0.0"></script>
+<script>
+    $(document).ready(function(){$("#loading-example-btn").click(function(){btn=$(this);simpleLoad(btn,true);simpleLoad(btn,false)})});function simpleLoad(btn,state){if(state){btn.children().addClass("fa-spin");btn.contents().last().replaceWith(" Loading")}else{setTimeout(function(){btn.children().removeClass("fa-spin");btn.contents().last().replaceWith(" Refresh")},2000)}};
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="js/ExpressCompanyTable.js"></script>
+<script src="js/orders_detail.js"></script>
+</body>
+
+</html>

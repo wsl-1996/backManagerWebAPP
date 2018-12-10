@@ -1,0 +1,26 @@
+.Specification_table{
+    border-collapse :collapse ;
+}
+.table_th_td input{
+    width:600px;
+    height:40px;
+    border :1px solid #e5e6e7;
+    font-size:12px;
+    text-align :center;
+}
+.table_th input{
+    width:350px;
+    height:40px;
+    border :1px solid #e5e6e7;
+    font-size:12px;
+    text-align :center;
+}
+
+#mail_classification{
+    position:relative;
+    left:10px;
+    top:2px;
+    width:50px;
+    height:31px;
+    border-color:#d2d2d2;
+}

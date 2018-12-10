@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+        http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd">
+    <mvc:annotation-driven >
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+        <mvc:interceptor>
+            <mvc:mapping path="/backmanage/**"/>
+            <mvc:exclude-mapping path="/backmanage/login"/>
+            <mvc:exclude-mapping path="/backmanage/checkli"/>
+            <bean class="com.skqtec.filter.BackmanagerInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/applet/**"/>
+            <mvc:exclude-mapping path="/applet/users/login"/>
+            <mvc:exclude-mapping path="/applet/groups/getgroup"/>
+            <mvc:exclude-mapping path="/applet/groups/getgroupinfo"/>
+            <mvc:exclude-mapping path="/applet/expressages/**"/>
+            <mvc:exclude-mapping path="/applet/banners/getbanner"/>
+            <mvc:exclude-mapping path="/applet/users/islogin"/>
+            <mvc:exclude-mapping path="/applet/images/upload"/>
+            <mvc:exclude-mapping path="/applet/explains/getexplain"/>
+            <mvc:exclude-mapping path="/applet/comments/getcommentlist"/>
+            <mvc:exclude-mapping path="/applet/products/getproductparameter"/>
+            <mvc:exclude-mapping path="/applet/payments/paycallback"/>
+            <bean class="com.skqtec.filter.WXClientInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!-- 处理器 -->
+    <context:component-scan base-package="com.skqtec"/>
+    <!-- websocket处理类 -->
+    <bean id="myHandler" class="com.skqtec.controller.SystemWebSocketHandler"/>
+    <!-- 握手接口/拦截器 -->
+    <bean id="myInterceptor" class="com.skqtec.tools.MyHandshakeInterceptor"/>
+    <websocket:handlers allowed-origins="*">
+        <websocket:mapping path="/websocket" handler="myHandler"/>
+        <websocket:handshake-interceptors>
+            <ref bean="myInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+
+    <!--********************************************配置hibernate********************************************-->
+    <context:property-placeholder location="/WEB-INF/config.properties" />
+    <task:annotation-driven />
+
+    <!--配置数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!--<property name="driverClass" value="${jdbc.driver}" />  &lt;!&ndash;数据库连接驱动&ndash;&gt;-->
+        <!--<property name="jdbcUrl" value="${jdbc.url}" />     &lt;!&ndash;数据库地址&ndash;&gt;-->
+        <!--<property name="user" value="${jdbc.username}" />   &lt;!&ndash;用户名&ndash;&gt;-->
+        <!--<property name="password" value="${jdbc.password}" />   &lt;!&ndash;密码&ndash;&gt;-->
+        <!--<property name="maxPoolSize" value="40" />      &lt;!&ndash;最大连接数&ndash;&gt;-->
+        <!--<property name="minPoolSize" value="1" />       &lt;!&ndash;最小连接数&ndash;&gt;-->
+        <!--<property name="initialPoolSize" value="10" />      &lt;!&ndash;初始化连接池内的数据库连接&ndash;&gt;-->
+        <!--<property name="maxIdleTime" value="20" />  &lt;!&ndash;最大空闲时间&ndash;&gt;-->
+    </bean>
+
+    <!--配置session工厂-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.skqtec.entity" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop> <!--hibernate根据实体自动生成数据库表-->
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>   <!--指定数据库方言-->
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>     <!--在控制台显示执行的数据库操作语句-->
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://47.99.78.252:3306/ketuanDB_test</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>     <!--在控制台显示执行的数据哭操作语句（格式）-->
+            </props>
+        </property>
+    </bean>
+    <!-- 事物管理器配置  -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+</beans>

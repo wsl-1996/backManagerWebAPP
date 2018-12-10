@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>客团商城后台管理 - 欢迎页面</title>
+    <meta name="keywords" content="客团 团购 商城 后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center animated fadeInDown">
+        <div>
+            <h1 class="logo-name">团</h1>
+        </div>
+        <h3>欢迎您</h3>
+        <!--<h3 class="font-bold">服务器内部错误</h3>-->
+
+        <div class="error-desc">
+            登录成功，页面正在跳转
+            <br/>请稍后...
+            <br/><a id="a_index" href="./index.html" class="btn btn-primary m-t">点击直接跳转</a>
+        </div>
+    </div>
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script type="text/javascript">
+
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        }
+        var authorid=getQueryString('authorid');
+        var hrefurl='./index.html?authorid='+authorid
+        $('#a_index')[0].setAttribute('href',hrefurl);
+        function jump(){
+            window.location.href='./index.html?authorid='+authorid;
+        }
+        window.setTimeout(jump,5000);
+    </script>
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>客团商城后台管理详情</title>
+    <meta name="keywords" content="客团 团购 商城 后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+    <link rel="stylesheet" href="css/ketuan_lyb.css">
+    <style>
+        .fa fa-edit:hover {
+            color: #9d9d9d;
+        }
+    </style>
+</head>
+
+<body class="gray-bg">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="m-b-md">
+                                    <!--<a class="btn btn-white btn-xs pull-right" id="refresh_product_btn">刷新</a>-->
+                                    <a class="btn btn-white btn-xs pull-right" id="online_btn">上线</a>
+                                    <a class="btn btn-white btn-xs pull-right" id="offline_btn">下线</a>
+                                    <a  class="btn btn-white btn-xs pull-right" id="establishGroup">创建团购</a>
+                                    <h2 id="product_name"></h2>
+                                </div>
+                                <dl class="dl-horizontal">
+                                    <dt>状态：</dt>
+                                    <dd><span class="label" id="product_state"></span></dd>
+                                    <dt>ID:</dt>
+                                    <dd id="product_id"></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <hr color="#c7c34c" size="2" width="100%" noshade="noshade" />
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <dl class="dl-horizontal">
+
+                                    <dt>产品的零价格：</dt>
+                                    <dd ><label id="product_price"></label><input id="product_price_input" style="display: none" placeholder="请输入新的商品零售价"><span id="edit_product_price" class="fa fa-edit"></span><span style="display: none" id="save_product_price" class="fa fa-save"></span><span style="display: none" id="edit_product_price_undo" class="fa fa-undo"></span></dd>
+                                    <dt>产品的成本价：</dt>
+                                    <dd ><label id="product_cost"></label><input id="product_cost_input" style="display: none" placeholder="请输入新的商品成本价格"><span id="edit_product_cost" class="fa fa-edit"></span><span style="display: none" id="save_product_cost" class="fa fa-save"></span><span style="display: none" id="edit_product_cost_undo" class="fa fa-undo"></span></dd>
+                                    <dt>产品描述：</dt>
+                                    <dd ><label id="product_info"></label><input id="product_info_input" style="display: none" placeholder="请输入新的商品描述"><span id="edit_product_info" class="fa fa-edit"></span><span style="display: none" id="save_product_info" class="fa fa-save"></span><span style="display: none" id="edit_product_info_undo" class="fa fa-undo"></span></dd>
+                                    <dt>产品历史总销量</dt>
+                                    <dd id="product_sale_Volume_History"></dd>
+                                    <dt>产品本月销量：</dt>
+                                    <dd id="product_sale_Volume_Monthly"></dd>
+                                    <dt>产品上线时间：</dt>
+                                    <dd ><label id="product_onlineTime"></label><input type="text" value="2018-05-20 13:14:20" style="display: none" id="product_onlineTime_input" data-date-format="yyyy-mm-dd hh:ii:ss"><span id="edit_product_onlineTime"  class="fa fa-edit" ></span><span style="display: none" id="save_product_onlineTime" class="fa fa-save"></span><span style="display: none" id="edit_product_onlineTime_undo" class="fa fa-undo"></span></dd>
+                                    <dt>产品下线时间：</dt>
+                                    <dd ><label id="product_offlineTime"></label><input type="text" value="2018-05-20 13:14:20" style="display: none" id="product_offlineTime_input" data-date-format="yyyy-mm-dd hh:ii:ss"><span id="edit_product_offlineTime"  class="fa fa-edit" ></span><span style="display: none" id="save_product_offlineTime" class="fa fa-save "></span><span style="display: none" id="edit_product_offlineTime_undo" class="fa fa-undo"></span></dd>
+
+                                    <dt>参数：</dt>
+                                    <dd ><label id="product_parameter"></label></dd>
+                                    <dt>售后几包装清单：</dt>
+                                    <dd ><label id="product_afterSale"></label></dd>
+                                    <dt>产品标签：</dt>
+                                    <dd ><label id="product_label"></label><input id="product_label_input" style="display: none" placeholder="请输入新的商品标签 多个标签用空格分割"><span id="edit_product_label" class="fa fa-edit"></span><span style="display: none" id="save_product_label" class="fa fa-save"></span><span style="display: none" id="edit_product_label_undo" class="fa fa-undo"></span></dd>
+
+                                    <dt>产品评分：</dt>
+                                    <dd id="product_starLevel"></dd>
+                                    <dt>评价标签：</dt>
+                                    <dd id="product_evaluateLabel"></dd>
+                                    <dt>产品产地：</dt>
+                                    <dd ><label id="product_productProduceAddress"></label></dd>
+
+                                    <dt>该产品用户的ID号码：</dt>
+                                    <dd id="product_userId"></dd>
+                                    <dt>产品的商家的ID号码：</dt>
+                                    <dd id="product_merchantId"></dd>
+                                    <dt>产品的首页图片</dt>
+                                    <dd id="product_first_img"></dd>
+
+
+                                </dl>
+                            </div>
+                        </div>
+                        <hr color="#c7c34c" size="2" width="100%" noshade="noshade" />
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <dt>产品展示页滑动图片</dt>
+                                <dd id="product_slide_imgs"></dd>
+                                <br />
+                                <dt>产品的详情图片</dt>
+                                <dd id="product_detail_imgs"></dd>
+                            </div>
+                        </div>
+                        <hr color="#c7c34c" size="2" width="100%" noshade="noshade" />
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <dt>买家评论</dt>
+                                <dd id="comments"></dd>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="js/jquery.min.js?v=2.1.4"></script><script src="js/checkstate.js"></script>
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script>
+        $(document).ready(function(){$("#loading-example-btn").click(function(){btn=$(this);simpleLoad(btn,true);simpleLoad(btn,false)})});function simpleLoad(btn,state){if(state){btn.children().addClass("fa-spin");btn.contents().last().replaceWith(" Loading")}else{setTimeout(function(){btn.children().removeClass("fa-spin");btn.contents().last().replaceWith(" Refresh")},2000)}};
+    </script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <script src="js/products_detail.js"></script>
+</body>
+
+</html>

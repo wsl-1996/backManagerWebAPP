@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>客团商城后台管理</title>
+    <meta name="keywords" content="客团 团购 商城 后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="css/modelview.css" rel="stylesheet">
+    <base target="_self">
+
+</head>
+
+<body class="gray-bg">
+
+
+
+    <div class="modal fade" id="sendmsgmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                    <h2>批量私信</h2>
+                </div>
+                <div class="modal-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="textview">编辑要发送的话</span>
+                                <input id="inputtext" class="form-control">
+                            </li>
+                            <li class="list-group-item">
+                                <span class="textview">消息类型</span>
+
+                                <div id="msgtypediv">
+                                    <ul class="list-group float-e-margins">
+                                        <li class="list-group-item"><label>聊天信息</label><input type="radio" value="0" name="group1"></li>
+                                        <li class="list-group-item"><label>退款</label> <input type="radio" value="2" name="group1"></li>
+                                        <li class="list-group-item"><label>返现</label><input type="radio" value="3" name="group1"></li>
+                                        <li class="list-group-item"><label>系统通知</label><input type="radio" value="5" name="group1"></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+
+
+                    <div id="sk-wait" class="sk-spinner sk-spinner-wave ">
+                        <div class="sk-rect1"></div>
+                        <div class="sk-rect2"></div>
+                        <div class="sk-rect3"></div>
+                        <div class="sk-rect4"></div>
+                        <div class="sk-rect5"></div>
+                    </div>
+
+                    <button id="sendbtn" type="button">发送</button>
+
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>所有用户</h5>
+                        <div class="ibox-tools">
+                            <!--<a href="product_create.html" class="btn btn-primary btn-xs">创建新产品</a>-->
+                        </div>
+                        <div id="chouseall" class="ibox-tools btn btn-white btn-sm">全选</div>
+
+                        <div id="chousesend" class="ibox-tools btn btn-white btn-sm" ><i class="fa fa-pencil"></i>批量私信</div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row m-b-sm m-t-sm">
+                            <div class="col-md-1">
+                                <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <input type="text" placeholder="请输入用户名称名称" class="input-sm form-control" id="searchKey"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary" id="searchBtn"> 搜索</button> </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-list">
+
+                            <table class="table table-hover" id="usersList">
+                                <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <!--<script src="js/checkstate.js"></script>-->
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script>
+       $(document).ready(function(){$("#loading-example-btn")
+           .click(function(){btn=$(this);
+           simpleLoad(btn,true);
+           simpleLoad(btn,false)})});
+       function simpleLoad(btn,state){
+           if(state){btn.children().addClass("fa-spin");
+           btn.contents().last().replaceWith(" Loading")
+           }else{
+               setTimeout(function(){
+                   btn.children().removeClass("fa-spin");
+                   btn.contents().last().replaceWith(" Refresh")
+               },2000)}};
+    </script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <script src="js/users.js"></script>
+    </body>
+</html>
